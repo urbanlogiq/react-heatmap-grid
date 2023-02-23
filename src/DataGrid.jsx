@@ -21,8 +21,16 @@ const DataGrid = ({
   title
 }) => {
   const flatArray = data.reduce((i, o) => [...o, ...i], []);
-  const max = Math.max(...flatArray);
-  const min = Math.min(...flatArray);
+  let min = Infinity;
+  let max = -Infinity;
+  for (let i = 0; i < flatArray.length; i++) {
+    if (flatArray[i] < min) {
+      min = flatArray[i];
+    }
+    if (flatArray[i] > max) {
+      max = flatArray[i];
+    }
+  }
 
   return (
     <div>
